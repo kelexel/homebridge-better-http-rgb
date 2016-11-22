@@ -32,6 +32,7 @@ function HTTP_RGB(log, config) {
     this.http_method                   = config.http_method               || 'GET';
     this.username                      = config.username                  || '';
     this.password                      = config.password                  || '';
+    this.timeout                       = config.timeout                   || 500;
 
     // Handle the basic on/off
     this.switch = { powerOn: {}, powerOff: {} };
@@ -490,6 +491,7 @@ HTTP_RGB.prototype = {
             body: body,
             method: method,
             rejectUnauthorized: false,
+            timeout: this.timeout,
             auth: {
                 user: this.username,
                 pass: this.password
